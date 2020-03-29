@@ -1,0 +1,25 @@
+{
+  "name": "dndroller",
+  "version": "0.0.1",
+  "description": "Assistant for Dungeons and Dragons functions",
+  "main": "bot.js",
+  "author": "djleoscience",
+  "dependencies": {
+    "discord.js": "^12.1.1",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djleoscience/diceroller.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/djleoscience/diceroller/issues"
+  },
+  "homepage": "https://github.com/djleoscience/diceroller#readme"
+}

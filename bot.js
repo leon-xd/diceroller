@@ -3,41 +3,53 @@ require('dotenv').config();
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+
+let settings = require("./settings.json");
+
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 });
 
 
 client.on('message', msg => {
-    if(msg.content.toLowerCase() === 'praise pelor!') {
-        msg.reply('Praise Pelor!');
+    if(msg.content.charAt(0) == settings.delimiter){
+        message = msg.content.slice(1);
+        console.log(message);
+        if(message.toLowerCase() === 'praise pelor!') {
+            msg.reply('Praise Pelor!');
+        }
+        
+        if(message.toLowerCase() === 'is ginsy a dum dum?') {
+            msg.reply('yes he is');
+        }
+    
+        if(message.includes("8 ball")){
+            if(msg.author.username === 'Gansy') {
+                msg.reply('shut up ginsy');
+            }
+            else{
+                msg.reply(get8BallReply());
+            }
+        }
+    
+        if(message.includes("roll d")){
+            integer = msg.content.match(/\d+/);
+            reply = rollDice(integer);
+            if(Number(reply) ==  Number(integer)){
+                reply = reply + "! Praise Pelor!";
+            }
+            if(Number(integer) != 1 && Number(reply) == 1){
+                reply = reply + " ha u suck";
+            }
+            msg.reply(reply);
+    
+        }
+
+        if(message.includes("change delimiter")){
+            
+        }
     }
     
-    if(msg.content.toLowerCase() === 'is ginsy a dum dum?') {
-        msg.reply('yes he is');
-    }
-
-    if(msg.content.includes("8 ball")){
-        if(msg.author.username === 'Gansy') {
-            msg.reply('shut up ginsy');
-        }
-        else{
-            msg.reply(get8BallReply());
-        }
-    }
-
-    if(msg.content.includes("roll d")){
-        integer = msg.content.match(/\d+/);
-        reply = rollDice(integer);
-        if(Number(reply) ==  Number(integer)){
-            reply = reply + "! Praise Pelor!";
-        }
-        if(Number(integer) != 1 && Number(reply) == 1){
-            reply = reply + " ha u suck";
-        }
-        msg.reply(reply);
-
-    }
 });
 
 
